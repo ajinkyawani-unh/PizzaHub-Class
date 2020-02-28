@@ -7,7 +7,25 @@
 		<key>PizzaHub.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>16</integer>
+			<integer>26</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>27B5773223F62587008F5586</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>27B5774823F62589008F5586</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>27B5775323F6258A008F5586</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
