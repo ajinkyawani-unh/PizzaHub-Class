@@ -1,8 +1,8 @@
 //
-//  ContentView.swift
+//  Debug.swift
 //  PizzaHub
 //
-//  Created by Hefele, Charles on 2/13/20.
+//  Created by Charles Hefele on 3/12/20.
 //  Copyright © 2020 Hefele, Charles. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import FirebaseFirestore
 
 let db = Firestore.firestore()
 
-struct ContentView: View {
+struct DebugView: View {
     var body: some View {
         VStack {
             Button(action: {
@@ -23,12 +23,12 @@ struct ContentView: View {
             .padding(10.0)
             
             Button(action: {
-               updatePizzerias()
-           }) {
-               Text("Update Pizzerias")
-                   .font(.largeTitle)
-           }
-           .padding(10.0)
+                updatePizzerias()
+            }) {
+                Text("Update Pizzerias")
+                    .font(.largeTitle)
+            }
+            .padding(10.0)
             
             Button(action: {
                 deleteCollection(collection: "pizzerias")
@@ -109,17 +109,18 @@ private func deleteCollection(collection: String) {
     db.collection(collection).getDocuments() { (querySnapshot, err) in
         if let err = err {
             print("Error getting documents: \(err)")
-        } else {
-            for document in querySnapshot!.documents {
-                print("Deleting \(document.documentID) => \(document.data())")
-                document.reference.delete()
-            }
+            return
+        }
+        
+        for document in querySnapshot!.documents {
+            print("Deleting \(document.documentID) => \(document.data())")
+            document.reference.delete()
         }
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        DebugView()
     }
 }
