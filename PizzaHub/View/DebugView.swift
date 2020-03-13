@@ -1,8 +1,8 @@
 //
-//  ContentView.swift
+//  Debug.swift
 //  PizzaHub
 //
-//  Created by Hefele, Charles on 2/13/20.
+//  Created by Charles Hefele on 3/12/20.
 //  Copyright © 2020 Hefele, Charles. All rights reserved.
 //
 
@@ -11,41 +11,41 @@ import FirebaseFirestore
 
 let db = Firestore.firestore()
 
-struct ContentView: View {
+struct Debug: View {
     var body: some View {
-        VStack {
-            Button(action: {
-                createPizzerias()
-            }) {
-                Text("Create Pizzerias")
-                    .font(.largeTitle)
-            }
-            .padding(10.0)
-            
-            Button(action: {
-               updatePizzerias()
+         VStack {
+           Button(action: {
+               createPizzerias()
            }) {
-               Text("Update Pizzerias")
+               Text("Create Pizzerias")
                    .font(.largeTitle)
            }
            .padding(10.0)
-            
-            Button(action: {
-                deleteCollection(collection: "pizzerias")
-            }) {
-                Text("Delete All Pizzerias")
-                    .font(.largeTitle)
-            }
-            .padding(10.0)
-            
-            Button(action: {
-                getCollection(collection: "pizzerias")
-            }) {
-                Text("Get All Pizzerias")
-                    .font(.largeTitle)
-            }
-            .padding(10.0)
-        }
+           
+           Button(action: {
+              updatePizzerias()
+          }) {
+              Text("Update Pizzerias")
+                  .font(.largeTitle)
+          }
+          .padding(10.0)
+           
+           Button(action: {
+               deleteCollection(collection: "pizzerias")
+           }) {
+               Text("Delete All Pizzerias")
+                   .font(.largeTitle)
+           }
+           .padding(10.0)
+           
+           Button(action: {
+               getCollection(collection: "pizzerias")
+           }) {
+               Text("Get All Pizzerias")
+                   .font(.largeTitle)
+           }
+           .padding(10.0)
+       }
     }
 }
 
@@ -118,8 +118,8 @@ private func deleteCollection(collection: String) {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct Debug_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Debug()
     }
 }
