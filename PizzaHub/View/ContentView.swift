@@ -9,15 +9,32 @@
 import SwiftUI
 import FirebaseFirestore
 
+let query = Firestore.firestore().collection("pizzerias2")
+
 struct ContentView: View {
-    @ObservedObject private var fbSession = firebaseSession
+    @ObservedObject private var pizzerias = FirebaseCollection<Pizzeria>(query: query)
     
     var body: some View {
-        List {
-            ForEach(fbSession.pizzerias) { pizzeria in
-                Text(pizzeria.name)
+        NavigationView {
+            VStack {
+                NavigationLink(destination: AddPizzeriaView()) {
+                    Text("Add Pizzeria")
+                }
+                List {
+                    ForEach(pizzerias.items) { pizzeria in
+                        NavigationLink(destination: PizzeriaDetailView(pizzeria: pizzeria)) {
+                            Text(pizzeria.name)
+                        }
+                    }.onDelete(perform: removePizzeria)
+                }
             }
+            .navigationBarTitle(Text("Pizzerias"))
+            .navigationBarItems(leading: EditButton())
         }
+    }
+    
+    func removePizzeria(at offsets: IndexSet) {
+        pizzerias.deleteItem(index: offsets.first!)
     }
 }
 

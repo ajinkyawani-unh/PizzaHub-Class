@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1F54CFF5241AFAD000FFE397 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54CFF4241AFAD000FFE397 /* DebugView.swift */; };
-		1F54CFF8241AFBAB00FFE397 /* FirebaseSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54CFF7241AFBAB00FFE397 /* FirebaseSession.swift */; };
 		1F54CFFA241B006100FFE397 /* Pizzeria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F54CFF9241B006100FFE397 /* Pizzeria.swift */; };
+		1FAC8EA6242D7B1500416DA7 /* FirebaseCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8EA5242D7B1500416DA7 /* FirebaseCollection.swift */; };
+		1FAC8EA8242D89CF00416DA7 /* PizzeriaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8EA7242D89CF00416DA7 /* PizzeriaDetailView.swift */; };
+		1FAC8EAA242D8E9700416DA7 /* AddPizzeriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAC8EA9242D8E9700416DA7 /* AddPizzeriaView.swift */; };
 		2700F29323FF65340023DA41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2700F29223FF65340023DA41 /* GoogleService-Info.plist */; };
 		2700F29423FF65340023DA41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2700F29223FF65340023DA41 /* GoogleService-Info.plist */; };
 		2700F29523FF65340023DA41 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2700F29223FF65340023DA41 /* GoogleService-Info.plist */; };
@@ -52,8 +54,10 @@
 /* Begin PBXFileReference section */
 		1C5DC3479CC65280D5B7A1EC /* Pods-PizzaHub-PizzaHubUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PizzaHub-PizzaHubUITests.release.xcconfig"; path = "Target Support Files/Pods-PizzaHub-PizzaHubUITests/Pods-PizzaHub-PizzaHubUITests.release.xcconfig"; sourceTree = "<group>"; };
 		1F54CFF4241AFAD000FFE397 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
-		1F54CFF7241AFBAB00FFE397 /* FirebaseSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSession.swift; sourceTree = "<group>"; };
 		1F54CFF9241B006100FFE397 /* Pizzeria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pizzeria.swift; sourceTree = "<group>"; };
+		1FAC8EA5242D7B1500416DA7 /* FirebaseCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCollection.swift; sourceTree = "<group>"; };
+		1FAC8EA7242D89CF00416DA7 /* PizzeriaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PizzeriaDetailView.swift; sourceTree = "<group>"; };
+		1FAC8EA9242D8E9700416DA7 /* AddPizzeriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPizzeriaView.swift; sourceTree = "<group>"; };
 		2700F29223FF65340023DA41 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27B5773323F62587008F5586 /* PizzaHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PizzaHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27B5773623F62587008F5586 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +118,8 @@
 			children = (
 				27B5773A23F62587008F5586 /* ContentView.swift */,
 				1F54CFF4241AFAD000FFE397 /* DebugView.swift */,
+				1FAC8EA7242D89CF00416DA7 /* PizzeriaDetailView.swift */,
+				1FAC8EA9242D8E9700416DA7 /* AddPizzeriaView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -121,7 +127,7 @@
 		1F54CFF6241AFB9500FFE397 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				1F54CFF7241AFBAB00FFE397 /* FirebaseSession.swift */,
+				1FAC8EA5242D7B1500416DA7 /* FirebaseCollection.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -467,13 +473,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				27B5776C23F63483008F5586 /* ShoppingCart.swift in Sources */,
+				1FAC8EA6242D7B1500416DA7 /* FirebaseCollection.swift in Sources */,
 				1F54CFF5241AFAD000FFE397 /* DebugView.swift in Sources */,
 				27B5773723F62587008F5586 /* AppDelegate.swift in Sources */,
+				1FAC8EAA242D8E9700416DA7 /* AddPizzeriaView.swift in Sources */,
 				27B5776823F62AA3008F5586 /* MenuItem.swift in Sources */,
-				1F54CFF8241AFBAB00FFE397 /* FirebaseSession.swift in Sources */,
 				27B5773923F62587008F5586 /* SceneDelegate.swift in Sources */,
 				27B5773B23F62587008F5586 /* ContentView.swift in Sources */,
 				1F54CFFA241B006100FFE397 /* Pizzeria.swift in Sources */,
+				1FAC8EA8242D89CF00416DA7 /* PizzeriaDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
