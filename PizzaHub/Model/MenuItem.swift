@@ -6,17 +6,29 @@
 //  Copyright © 2020 Hefele, Charles. All rights reserved.
 //
 
-class MenuItem {
-    var name: String
-    var price: Double
+import FirebaseFirestore
+
+class MenuItem: FirebaseCodable {
+    var id: String
+    @Published var name: String
+    @Published var price: String
     
-    init?(name: String, price: Double) {
-        if name.isEmpty || price < 0 {
-            return nil
+    var data: [String: Any] {
+        return [
+            "name": name,
+            "price": price,
+        ]
+    }
+    
+    required init?(id: String, data: [String : Any]) {
+        guard let name = data["name"] as? String,
+            let price = data["price"] as? String
+            else {
+                return nil
         }
+        
+        self.id = id
         self.name = name
         self.price = price
     }
-    
-    
 }

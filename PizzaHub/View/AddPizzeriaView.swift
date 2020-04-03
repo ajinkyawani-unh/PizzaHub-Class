@@ -16,28 +16,27 @@ struct AddPizzeriaView: View {
     
     var body: some View {
         Group {
-            VStack {
+            VStack(spacing: 25) {
                 HStack {
                     Text("Pizzeria Name")
                     TextField("Enter Name", text: $name)
-                    .padding()
                 }
                 HStack {
                     Text("Pizzeria City")
                     TextField("Enter City", text: $city)
-                    .padding()
                 }
                 HStack {
                     Text("Pizzeria State")
                     TextField("Enter State", text: $state)
-                    .padding()
                 }
                 Button(action: {
                     self.addPizzeria()
                 }) {
                     Text("Add")
                 }
+                Spacer()
             }
+            .navigationBarTitle("Add Pizzeria")
         }
         .padding()
     }
@@ -45,8 +44,8 @@ struct AddPizzeriaView: View {
     func addPizzeria() {
         print("Adding pizzeria")
         if !name.isEmpty && !city.isEmpty && !state.isEmpty {
-            //TODO: add reference to firebase collection
-            //TODO: add the new pizzeria to firebase
+            let data = ["name": name, "city": city, "state":state]
+            pizzeriasCollectionRef.addDocument(data: data)
             dismiss()
         }
     }
