@@ -9,10 +9,10 @@
 import SwiftUI
 import FirebaseFirestore
 
-let query = Firestore.firestore().collection("pizzerias2")
+let pizzeriasCollectionRef = Firestore.firestore().collection("pizzerias")
 
 struct ContentView: View {
-    @ObservedObject private var pizzerias = FirebaseCollection<Pizzeria>(query: query)
+    @ObservedObject private var pizzerias = FirebaseCollection<Pizzeria>(collectionRef: pizzeriasCollectionRef)
     
     var body: some View {
         NavigationView {
@@ -25,7 +25,7 @@ struct ContentView: View {
                         NavigationLink(destination: PizzeriaDetailView(pizzeria: pizzeria)) {
                             Text(pizzeria.name)
                         }
-                    }.onDelete(perform: removePizzeria)
+                    }.onDelete(perform: deletePizzeria)
                 }
             }
             .navigationBarTitle(Text("Pizzerias"))
@@ -33,8 +33,17 @@ struct ContentView: View {
         }
     }
     
-    func removePizzeria(at offsets: IndexSet) {
-        pizzerias.deleteItem(index: offsets.first!)
+    func deletePizzeria(at offsets: IndexSet) {
+        let index = offsets.first!
+        print("Deleting pizzeria: \(pizzerias.items[index])")
+        let id = pizzerias.items[index].id
+        pizzeriasCollectionRef.document(id).delete() { error in
+            if let error = error {
+                print("Error removing document: \(error)")
+            } else {
+                print("Document successfully removed!")
+            }
+        }
     }
 }
 
