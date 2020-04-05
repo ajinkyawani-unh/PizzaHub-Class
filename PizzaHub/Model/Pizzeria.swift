@@ -8,9 +8,31 @@
 
 import FirebaseFirestore
 
-struct Pizzeria: Identifiable {
+class Pizzeria: FirebaseCodable {
     var id: String
-    var name: String
-    var city: String
-    var state: String
+    @Published var name: String
+    @Published var city: String
+    @Published var state: String
+    
+    var data: [String: Any] {
+        return [
+            "name": name,
+            "city": city,
+            "state": state
+        ]
+    }
+    
+    required init?(id: String, data: [String : Any]) {
+        guard let name = data["name"] as? String,
+            let city = data["city"] as? String,
+            let state = data["state"] as? String
+            else {
+                return nil
+        }
+        
+        self.id = id
+        self.name = name
+        self.city = city
+        self.state = state
+    }
 }

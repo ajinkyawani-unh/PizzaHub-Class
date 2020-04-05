@@ -9,13 +9,39 @@
 import SwiftUI
 import FirebaseFirestore
 
+let pizzeriasCollectionRef = Firestore.firestore().collection("pizzerias")
+
 struct ContentView: View {
-    @ObservedObject private var fbSession = firebaseSession
+    @ObservedObject private var pizzerias = FirebaseCollection<Pizzeria>(collectionRef: pizzeriasCollectionRef)
     
     var body: some View {
-        List {
-            ForEach(fbSession.pizzerias) { pizzeria in
-                Text(pizzeria.name)
+        NavigationView {
+            VStack {
+                NavigationLink(destination: AddPizzeriaView()) {
+                    Text("Add Pizzeria")
+                }
+                List {
+                    ForEach(pizzerias.items) { pizzeria in
+                        NavigationLink(destination: PizzeriaDetailView(pizzeria: pizzeria)) {
+                            Text(pizzeria.name)
+                        }
+                    }.onDelete(perform: deletePizzeria)
+                }
+            }
+            .navigationBarTitle(Text("Pizzerias"))
+            .navigationBarItems(leading: EditButton())
+        }
+    }
+    
+    func deletePizzeria(at offsets: IndexSet) {
+        let index = offsets.first!
+        print("Deleting pizzeria: \(pizzerias.items[index])")
+        let id = pizzerias.items[index].id
+        pizzeriasCollectionRef.document(id).delete() { error in
+            if let error = error {
+                print("Error removing document: \(error)")
+            } else {
+                print("Document successfully removed!")
             }
         }
     }

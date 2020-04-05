@@ -11,41 +11,41 @@ import FirebaseFirestore
 
 let db = Firestore.firestore()
 
-struct Debug: View {
+struct DebugView: View {
     var body: some View {
-         VStack {
-           Button(action: {
-               createPizzerias()
-           }) {
-               Text("Create Pizzerias")
-                   .font(.largeTitle)
-           }
-           .padding(10.0)
-           
-           Button(action: {
-              updatePizzerias()
-          }) {
-              Text("Update Pizzerias")
-                  .font(.largeTitle)
-          }
-          .padding(10.0)
-           
-           Button(action: {
-               deleteCollection(collection: "pizzerias")
-           }) {
-               Text("Delete All Pizzerias")
-                   .font(.largeTitle)
-           }
-           .padding(10.0)
-           
-           Button(action: {
-               getCollection(collection: "pizzerias")
-           }) {
-               Text("Get All Pizzerias")
-                   .font(.largeTitle)
-           }
-           .padding(10.0)
-       }
+        VStack {
+            Button(action: {
+                createPizzerias()
+            }) {
+                Text("Create Pizzerias")
+                    .font(.largeTitle)
+            }
+            .padding(10.0)
+            
+            Button(action: {
+                updatePizzerias()
+            }) {
+                Text("Update Pizzerias")
+                    .font(.largeTitle)
+            }
+            .padding(10.0)
+            
+            Button(action: {
+                deleteCollection(collection: "pizzerias")
+            }) {
+                Text("Delete All Pizzerias")
+                    .font(.largeTitle)
+            }
+            .padding(10.0)
+            
+            Button(action: {
+                getCollection(collection: "pizzerias")
+            }) {
+                Text("Get All Pizzerias")
+                    .font(.largeTitle)
+            }
+            .padding(10.0)
+        }
     }
 }
 
@@ -109,17 +109,18 @@ private func deleteCollection(collection: String) {
     db.collection(collection).getDocuments() { (querySnapshot, err) in
         if let err = err {
             print("Error getting documents: \(err)")
-        } else {
-            for document in querySnapshot!.documents {
-                print("Deleting \(document.documentID) => \(document.data())")
-                document.reference.delete()
-            }
+            return
+        }
+        
+        for document in querySnapshot!.documents {
+            print("Deleting \(document.documentID) => \(document.data())")
+            document.reference.delete()
         }
     }
 }
 
-struct Debug_Previews: PreviewProvider {
+struct DebugView_Previews: PreviewProvider {
     static var previews: some View {
-        Debug()
+        DebugView()
     }
 }
