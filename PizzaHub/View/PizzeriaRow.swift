@@ -23,10 +23,6 @@ struct PizzeriaRow: View {
 
 struct PizzeriaRow_Previews: PreviewProvider {
     static var previews: some View {
-        PizzeriaRow(pizzeria:
-            Pizzeria(id: "1", data: ["name": "Vittoria's",
-                                     "city": "Westerly",
-                                     "state": "RI",
-                                     "photo": "2"])!)
+        PizzeriaRow(pizzeria: Pizzeria.example)
     }
 }
