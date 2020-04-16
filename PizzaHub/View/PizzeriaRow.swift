@@ -16,6 +16,8 @@ struct PizzeriaRow: View {
             Image("pizzeria\(pizzeria.photo)")
                 .resizable()
                 .frame(width: 50, height: 50)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.gray, lineWidth: 2))
             Text(pizzeria.name)
         }
     }
