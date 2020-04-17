@@ -32,9 +32,9 @@ class PizzaHubTests: XCTestCase {
         let largeSupremeItem = MenuItem(id: "1", data: ["name": "Large Supreme", "price": "27.00", "photo": "1"])
         let cart = ShoppingCart()
         XCTAssertEqual(0, cart.items.count)
-        cart.addItem(item: smallPepperoniItem!)
+        cart.add(item: smallPepperoniItem!)
         XCTAssertEqual(1, cart.items.count)
-        cart.addItem(item: largeSupremeItem!)
+        cart.add(item: largeSupremeItem!)
         XCTAssertEqual(2, cart.items.count)
     }
     
@@ -42,9 +42,9 @@ class PizzaHubTests: XCTestCase {
         let smallPepperoniItem = MenuItem(id: "1", data: ["name": "Small Pepperoni", "price": "12.50", "photo": "1"])
         let largeSupremeItem = MenuItem(id: "1", data: ["name": "Large Supreme", "price": "27.00", "photo": "1"])
         let cart = ShoppingCart()
-        cart.addItem(item: smallPepperoniItem!)
-        cart.addItem(item: largeSupremeItem!)
-        XCTAssertEqual(39.50, cart.returnTotal())
+        cart.add(item: smallPepperoniItem!)
+        cart.add(item: largeSupremeItem!)
+        XCTAssertEqual(39.50, cart.total)
     }
 
 }
