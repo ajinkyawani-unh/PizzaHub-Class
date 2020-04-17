@@ -21,10 +21,14 @@ struct OrderView: View {
                             Spacer()
                             Text("$\(item.price)")
                         }
-                    }
+                    }.onDelete(perform: deleteItems)
                 }
             }.navigationBarTitle("Order")
         }
+    }
+    
+    func deleteItems(at offsets: IndexSet) {
+        cart.items.remove(atOffsets: offsets)
     }
 }
 
