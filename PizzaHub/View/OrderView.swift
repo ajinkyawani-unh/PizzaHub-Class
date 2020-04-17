@@ -23,7 +23,10 @@ struct OrderView: View {
                         }
                     }.onDelete(perform: deleteItems)
                 }
-            }.navigationBarTitle("Order")
+            }
+            .navigationBarTitle("Order")
+            .listStyle(GroupedListStyle())
+            .navigationBarItems(trailing: EditButton())
         }
     }
     
