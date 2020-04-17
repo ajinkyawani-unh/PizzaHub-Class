@@ -23,6 +23,12 @@ struct OrderView: View {
                         }
                     }.onDelete(perform: deleteItems)
                 }
+                
+                Section {
+                    NavigationLink(destination: CheckoutView()) {
+                        Text("Place Order")
+                    }
+                }.disabled(cart.items.isEmpty)
             }
             .navigationBarTitle("Order")
             .listStyle(GroupedListStyle())

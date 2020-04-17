@@ -29,7 +29,9 @@ struct MenuItemDetailView: View {
 }
 
 struct MenuItemDetailView_Previews: PreviewProvider {
+    static let cart = ShoppingCart()
+    
     static var previews: some View {
-        MenuItemDetailView(menuItem: MenuItem.example)
+        MenuItemDetailView(menuItem: MenuItem.example).environmentObject(cart)
     }
 }
