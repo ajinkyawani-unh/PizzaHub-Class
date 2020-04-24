@@ -22,6 +22,12 @@ struct AppTabView: View {
                     Image(systemName: "cart").font(.title)
                     Text("Cart")
             }
+            
+            OrdersView()
+                .tabItem {
+                    Image(systemName: "square.and.pencil").font(.title)
+                    Text("Orders")
+            }
         }
     }
 }
