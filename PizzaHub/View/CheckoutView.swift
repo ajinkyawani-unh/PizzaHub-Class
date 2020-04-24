@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct CheckoutView: View {
     @EnvironmentObject var cart: ShoppingCart
@@ -23,7 +24,7 @@ struct CheckoutView: View {
         .navigationBarTitle(Text("Payment"), displayMode: .inline)
         .alert(isPresented: $showingPaymentAlert) {
             Alert(title: Text("Order confirmed"), message: Text("Your total was $\(cart.total, specifier: "%.2f") - thank you!"), dismissButton: .default(Text("OK")) {
-                    self.cart.reset()
+                self.cart.reset()
                 })
         }
     }
@@ -32,9 +33,16 @@ struct CheckoutView: View {
         // toggle the payment alert
         self.showingPaymentAlert.toggle()
         
+        // upload the order to firebase
         guard let pizzeria = self.cart.pizzeria else {
             return
         }
+        let data = ["timestamp": Timestamp(),
+                    "pizzeria": pizzeria.name,
+                    "items": self.cart.items.map({ $0.name }),
+                    "total": String(format: "%.2f", cart.total)]
+            as [String : Any]
+        ordersCollectionRef.addDocument(data: data) // post to firebase
         
         // show pizza ready notification to the user
         let content = UNMutableNotificationContent()
