@@ -17,10 +17,10 @@ struct AppTabView: View {
                     Text("Pizzerias")
             }
             
-            OrderView()
+            CartView()
                 .tabItem {
-                    Image(systemName: "square.and.pencil")
-                    Text("Order")
+                    Image(systemName: "cart")
+                    Text("Cart")
             }
         }
     }
