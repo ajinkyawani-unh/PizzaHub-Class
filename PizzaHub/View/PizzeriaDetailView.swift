@@ -21,24 +21,22 @@ struct PizzeriaDetailView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 Text(pizzeria.city)
                 Text(pizzeria.state)
                 Spacer()
+                NavigationLink(destination: EditPizzeriaView(pizzeria: pizzeria)) {
+                    Text("Edit")
+                }
             }
-            NavigationLink(destination: EditPizzeriaView(pizzeria: pizzeria)) {
-                Text("Edit")
-            }
-            Divider()
+            CircleImage(image: Image("pizzeria\(pizzeria.photo)"))
             Text("Menu")
                 .font(.largeTitle)
             List {
                 ForEach(menu.items) { menuItem in
-                    HStack {
-                        Text(menuItem.name)
-                        Spacer()
-                        Text(menuItem.price)
+                    NavigationLink(destination: MenuItemDetailView(menuItem: menuItem)) {
+                        MenuItemRow(menuItem: menuItem)
                     }
                 }
             }
@@ -51,10 +49,6 @@ struct PizzeriaDetailView: View {
 
 struct PizzeriaDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PizzeriaDetailView(pizzeria:
-            Pizzeria(id: "1", data: ["name": "Vittoria's",
-                                     "city": "Westerly",
-                                     "state": "RI"])!
-        )
+        PizzeriaDetailView(pizzeria: Pizzeria.example)
     }
 }

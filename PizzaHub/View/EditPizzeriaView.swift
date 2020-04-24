@@ -16,15 +16,15 @@ struct EditPizzeriaView: View {
         Group {
             VStack(spacing: 25) {
                 HStack {
-                    Text("Pizzeria Name")
+                    Text("Pizzeria Name:")
                     TextField("Enter Name", text: $pizzeria.name)
                 }
                 HStack {
-                    Text("Pizzeria City")
+                    Text("Pizzeria City:")
                     TextField("Enter City", text: $pizzeria.city)
                 }
                 HStack {
-                    Text("Pizzeria State")
+                    Text("Pizzeria State:")
                     TextField("Enter State", text: $pizzeria.state)
                 }
                 Button(action: {
@@ -54,9 +54,6 @@ struct EditPizzeriaView: View {
 
 struct EditPizzeriaView_Previews: PreviewProvider {
     static var previews: some View {
-        EditPizzeriaView(pizzeria:
-            Pizzeria(id: "1", data: ["name": "Vittoria's",
-                                     "city": "Westerly",
-                                     "state": "RI"])!)
+        EditPizzeriaView(pizzeria: Pizzeria.example)
     }
 }

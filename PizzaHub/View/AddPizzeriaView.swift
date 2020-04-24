@@ -18,15 +18,15 @@ struct AddPizzeriaView: View {
         Group {
             VStack(spacing: 25) {
                 HStack {
-                    Text("Pizzeria Name")
+                    Text("Pizzeria Name:")
                     TextField("Enter Name", text: $name)
                 }
                 HStack {
-                    Text("Pizzeria City")
+                    Text("Pizzeria City:")
                     TextField("Enter City", text: $city)
                 }
                 HStack {
-                    Text("Pizzeria State")
+                    Text("Pizzeria State:")
                     TextField("Enter State", text: $state)
                 }
                 Button(action: {
@@ -44,7 +44,12 @@ struct AddPizzeriaView: View {
     func addPizzeria() {
         print("Adding pizzeria")
         if !name.isEmpty && !city.isEmpty && !state.isEmpty {
-            let data = ["name": name, "city": city, "state":state]
+            //TODO: replace random photo generator with actual photo chooser
+            // 1. show users list of possible photos to choose from
+            // 2. allow user to select a photo from their photo library
+            // 3. allow user to take a new photo using the camera
+            let photo = String(Int.random(in: 1 ..< 7)) // random number b/w 1 & 6
+            let data = ["name": name, "city": city, "state": state, "photo": photo]
             pizzeriasCollectionRef.addDocument(data: data)
             dismiss()
         }
