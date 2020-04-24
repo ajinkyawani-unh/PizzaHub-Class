@@ -44,4 +44,9 @@ class ShoppingCart: ObservableObject {
         }
     }
     
+    func reset() {
+        pizzeria = nil
+        items = [MenuItem]()
+    }
+    
 }
