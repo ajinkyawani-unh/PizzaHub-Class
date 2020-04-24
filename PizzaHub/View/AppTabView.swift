@@ -13,13 +13,13 @@ struct AppTabView: View {
         TabView {
             ContentView()
                 .tabItem {
-                    Image(systemName: "list.dash")
+                    Image(systemName: "list.dash").font(.title)
                     Text("Pizzerias")
             }
             
             CartView()
                 .tabItem {
-                    Image(systemName: "cart")
+                    Image(systemName: "cart").font(.title)
                     Text("Cart")
             }
         }
